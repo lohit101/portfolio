@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const viewers = [
   {
@@ -31,15 +31,17 @@ export default function Header() {
     description: string
   } | null>(null);
 
+  useEffect(() => {
+    setSelectedViewer(viewers[0]);
+  }, [])
+
   return (
     <header className="flex flex-col mt-20 w-1/2 mx-auto min-h-96">
       <div className="flex gap-5 text-sm">
         {
           viewers.map((viewer, key) => (
-            <button key={ key } className={`rounded-md transition-all opacity-20 hover:opacity-80 ${
-              selectedViewer?.for === viewer.for && "opacity-100"
-            } ${
-              !selectedViewer && key === 0 && "opacity-100"
+            <button key={ key } className={`rounded-md transition-all hover:opacity-80 ${
+              selectedViewer?.for === viewer.for ? "opacity-100" : "opacity-20"
             }`} onClick={() => {
               setSelectedViewer(viewer);
             }}>{ viewer.for }</button>
@@ -47,7 +49,7 @@ export default function Header() {
         }
       </div>
       <h1 className="text-4xl my-10">
-        { selectedViewer?.description || viewers[0].description }
+        { selectedViewer?.description }
       </h1>
     </header>
   )
