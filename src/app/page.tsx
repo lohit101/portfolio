@@ -1,3 +1,4 @@
+import { HeroAtmosphere } from "@/components/hero-atmosphere";
 import { Navigation } from "@/components/navigation";
 import { ScrollScene } from "@/components/scroll-scene";
 import { Wordmark } from "@/components/wordmark";
@@ -13,13 +14,21 @@ export default function Home() {
       <ScrollScene>
         <main>
           <section className="hero" aria-label="Introduction">
+            <HeroAtmosphere />
             <div className="white-bloom" />
             <div className="hero-ink">
               <h1 className="hero-wordmark">
                 <span className="sr-only">Lohit</span>
-                <Wordmark />
-                <span className="trademark" aria-hidden="true">
-                  TM
+                <span className="wordmark-desktop" aria-hidden="true">
+                  <Wordmark />
+                  <span className="trademark">TM</span>
+                </span>
+                <span className="wordmark-mobile" aria-hidden="true">
+                  <Wordmark segment="loh" />
+                  <span className="wordmark-mobile-tail">
+                    <Wordmark segment="it" />
+                    <span className="trademark">TM</span>
+                  </span>
                 </span>
               </h1>
               <div className="hero-copy">

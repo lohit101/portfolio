@@ -205,3 +205,26 @@ test("mobile reduced-motion navbar toggles without a slide", async ({
     .poll(() => nav.evaluate((el) => el.getBoundingClientRect().top))
     .toBe(0);
 });
+
+test("hero atmosphere drifts and becomes still with reduced motion", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const blob = page.locator(".ambient-blob").first();
+  await expect(blob).toBeVisible();
+  const first = await blob.evaluate((el) => getComputedStyle(el).transform);
+  await expect
+    .poll(() => blob.evaluate((el) => getComputedStyle(el).transform))
+    .not.toBe(first);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(blob).not.toHaveAttribute("style", /transform:/);
+  const still = await blob.evaluate((el) => getComputedStyle(el).transform);
+  await page.waitForTimeout(200);
+  expect(await blob.evaluate((el) => getComputedStyle(el).transform)).toBe(
+    still,
+  );
+  await expect(page.locator(".hero-atmosphere")).toHaveAttribute(
+    "aria-hidden",
+    "true",
+  );
+});

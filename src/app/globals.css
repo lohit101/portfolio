@@ -103,6 +103,12 @@ button:active {
   margin: 0;
   padding-right: 3.1%;
 }
+.wordmark-desktop {
+  display: block;
+}
+.wordmark-mobile {
+  display: none;
+}
 .hero-wordmark svg {
   display: block;
   width: 100%;
@@ -1001,14 +1007,28 @@ button:active {
     top: 18px;
     left: 12px;
     right: 12px;
-    padding-right: 19px;
+    padding-right: 0;
+  }
+  .wordmark-desktop {
+    display: none;
+  }
+  .wordmark-mobile {
+    display: grid;
+    gap: 10px;
   }
   .hero-wordmark svg {
-    height: 32dvh;
-    min-height: 175px;
+    height: clamp(120px, 21dvh, 190px);
+    min-height: 0;
   }
-  .trademark {
-    font-size: 12px;
+  .wordmark-mobile-tail {
+    width: 46.508%;
+    position: relative;
+  }
+  .wordmark-mobile .trademark {
+    font-size: 20px;
+    left: calc(100% + 7px);
+    right: auto;
+    top: 0;
   }
   .hero-copy {
     left: 16px;
@@ -1342,4 +1362,99 @@ button:active {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 0.3em;
+}
+
+/* Tonal red atmosphere. Gradient falloff supplies the blur without filters. */
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.ambient-blob {
+  position: absolute;
+  width: 54vmax;
+  height: 42vmax;
+  opacity: 0.6;
+}
+.ambient-lobe {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(126, 8, 28, 0.92) 0%,
+    rgba(162, 12, 22, 0.76) 25%,
+    rgba(189, 20, 10, 0.4) 46%,
+    transparent 70%
+  );
+}
+.ambient-lobe:nth-child(2) {
+  inset: 15% -10% -5% 24%;
+  transform: rotate(35deg);
+}
+.ambient-lobe:nth-child(3) {
+  inset: -5% 24% 25% -10%;
+  transform: rotate(-25deg);
+}
+.ambient-blob-0 {
+  left: -16%;
+  top: 24%;
+  transform: rotate(-25deg);
+}
+.ambient-blob-1 {
+  right: -15%;
+  top: 3%;
+  opacity: 0.5;
+  transform: rotate(30deg);
+}
+.ambient-blob-2 {
+  left: 24%;
+  top: 44%;
+  width: 48vmax;
+  height: 34vmax;
+  opacity: 0.48;
+}
+.ambient-blob-2 .ambient-lobe {
+  background: radial-gradient(
+    ellipse,
+    rgba(118, 6, 24, 0.92) 0%,
+    rgba(160, 14, 20, 0.72) 30%,
+    transparent 68%
+  );
+}
+.ambient-blob-3 {
+  left: 32%;
+  top: -26%;
+  width: 44vmax;
+  height: 50vmax;
+  opacity: 0.32;
+}
+@media (max-width: 767px) {
+  .ambient-blob {
+    width: 72vmin;
+    height: 100vmin;
+  }
+  .ambient-blob-0 {
+    left: -25%;
+    top: 31%;
+  }
+  .ambient-blob-1 {
+    right: -32%;
+    top: 10%;
+  }
+  .ambient-blob-2 {
+    left: 18%;
+    top: 54%;
+  }
+  .ambient-blob-3 {
+    left: 24%;
+    top: -16%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-atmosphere {
+    opacity: 0.7;
+  }
 }

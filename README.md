@@ -22,6 +22,8 @@ The projects are labeled concepts. Preview controls, Fragments dialogs, palette 
 
 ## Motion and accessibility
 
+The red hero contains four tonal, multi-lobed forms with randomized GSAP drift and transform-based morphing. They pause offscreen and in background tabs, and remain static under reduced motion. Edit `src/components/hero-atmosphere.tsx` for timing and travel, or the `.ambient-*` CSS rules for color and softness.
+
 Desktop uses GSAP ScrollSmoother with ScrollTrigger. The opening scene pins over the work section, then crossfades directly into it without an extra viewport of whitespace. Navigation is fixed outside the transformed scroll content after the entrance. It slides away on downward scrolling and returns upward, with a 16px direction threshold and keyboard-focus protection. White ink uses difference blending over a transparent background. Reduced motion uses native sticky positioning and instant visibility changes. Cormorant Garamond Medium Italic is loaded through next/font for the hero continuation and repeated editorial accents in the work, about, guestbook, and contact headings. Touch scrolling stays native. Reduced-motion users get normal document flow and visible hero copy. A no-JavaScript fallback keeps the full introduction readable. Dialogs use native modal semantics, Escape dismissal, and focus restoration.
 
 ## Checks
