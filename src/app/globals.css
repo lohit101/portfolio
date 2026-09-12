@@ -1458,3 +1458,18 @@ button:active {
     opacity: 0.7;
   }
 }
+
+/* Low-contrast grain above the page; never intercepts links or gestures. */
+.site-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  opacity: 0.055;
+  pointer-events: none;
+  user-select: none;
+}
+@media print {
+  .site-grain { display: none; }
+}
