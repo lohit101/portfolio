@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { fragments, type Fragment } from "@/lib/content";
-import { FragmentPreview } from "./previews";
+import { FragmentPreview } from "./fragment-snippets";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 export function Fragments() {
   const [selected, setSelected] = useState<Fragment | null>(null);
@@ -10,9 +10,12 @@ export function Fragments() {
   useEffect(() => {
     if (!selected) return;
     const smoother = ScrollSmoother.get();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     smoother?.paused(true);
     dialog.current?.showModal();
     return () => {
+      document.body.style.overflow = previousOverflow;
       smoother?.paused(false);
     };
   }, [selected]);

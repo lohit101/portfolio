@@ -36,45 +36,45 @@ export const projects = [
 export const fragments = [
   {
     id: "type",
-    title: "Type with a pulse",
-    category: "Typography",
+    title: "A type of feeling",
+    category: "Variable typography / Live controls",
     description:
-      "An oversized typographic study. Hover or focus the letters to stretch the composition.",
+      "Adjust weight and spacing to feel how tiny typographic decisions change a voice.",
   },
   {
     id: "orbit",
-    title: "A little out of orbit",
-    category: "Interaction",
+    title: "Know where you are",
+    category: "Navigation / Spatial feedback",
     description:
-      "A circular motion study built with CSS transforms. Press the preview to set it in motion.",
+      "A compact dock with a sliding selection and a responsive composition. Try the arrow keys, too.",
   },
   {
     id: "switch",
     title: "Small switch. Big feeling.",
-    category: "Interface",
+    category: "Settings / State transitions",
     description:
-      "A tactile toggle exploring how a small interaction can give a product personality.",
+      "A focus switch that makes its effect visible. Clear feedback, before and after.",
   },
   {
     id: "poster",
-    title: "Make some noise",
-    category: "Art direction",
+    title: "Consider it kept",
+    category: "Microinteraction / Undo",
     description:
-      "An expressive poster system using only type, a circle, and a single accent color.",
+      "A save action with a pending state, confirmation, and a way back. A local demo; nothing is sent or stored permanently.",
   },
   {
     id: "palette",
-    title: "A different temperature",
-    category: "Color study",
+    title: "Feeling, with function",
+    category: "Color systems / Accessibility",
     description:
-      "An interactive palette study. Select a swatch to change the composition.",
+      "Three palettes with contrast ratios calculated from their actual colors. A little taste, backed by a little math.",
   },
   {
     id: "time",
-    title: "Room to breathe",
-    category: "Creative development",
+    title: "First things first",
+    category: "Interaction / Accessible reordering",
     description:
-      "A breathing exercise prototype. Start a short loop and follow the expanding circle.",
+      "Rearrange priorities with touch or keyboard. The list moves with you and announces every change.",
   },
 ] as const;
 export type Fragment = (typeof fragments)[number];
