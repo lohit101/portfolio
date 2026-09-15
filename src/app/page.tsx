@@ -72,6 +72,10 @@ export default function Home() {
                         <a className="concept-label" href={p.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${p.name} on GitHub`}>
                           VIEW SOURCE ↗
                         </a>
+                      ) : "caseStudyUrl" in p ? (
+                        <a className="concept-label" href={p.caseStudyUrl} target="_blank" rel="noopener noreferrer" aria-label="View Amazon rebrand case study on Behance">
+                          VIEW CASE STUDY ↗
+                        </a>
                       ) : (
                         <span className="concept-label">
                           {p.id === "opencorp" ? "RECENT PROJECT" : "CONCEPT PROJECT ↗"}

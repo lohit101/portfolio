@@ -25,13 +25,14 @@ export const projects = [
     sourceUrl: "https://github.com/lohit101/crypto-payment-gateway/tree/idx",
   },
   {
-    id: "offscript",
-    name: "OFFSCRIPT",
-    category: "Art direction / Creative development",
+    id: "amazon",
+    name: "Amazon — Reimagined",
+    category: "Brand identity / Rebrand concept",
     description:
-      "An interactive campaign that gives an independent culture festival a voice as loud as its lineup.",
-    type: "Digital campaign",
-    year: "2026",
+      "An independent rebrand concept exploring a new expression of Amazon. A geometric wordmark, a refined smile, and a compact symbol form one connected identity.",
+    type: "Brand identity concept",
+    year: "2022",
+    caseStudyUrl: "https://www.behance.net/gallery/156197543/Amazon-Brand-Identity-Redesign-(Rebranding)",
   },
 ] as const;
 export const fragments = [

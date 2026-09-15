@@ -16,6 +16,18 @@ export function ProjectPreview({ kind }: { kind: string }) {
         />
       </div>
     );
+  if (kind === "amazon")
+    return (
+      <div className="project-preview amazon">
+        <Image
+          src="/projects/amazon-rebrand-cover.png"
+          alt="Amazon rebrand concept: a geometric white wordmark and orange smile above textured orange and black identity boards bearing the redesigned a symbol."
+          fill
+          sizes="(max-width: 700px) 92vw, 45vw"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
+    );
   if (kind === "cryptowall")
     return (
       <div className="project-preview cryptowall">
