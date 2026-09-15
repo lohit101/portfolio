@@ -7,6 +7,9 @@ export const profile = {
 export const projects = [
   {
     id: "opencorp",
+    href: "https://github.com/lohit101/opencorp",
+    linkLabel: "View source",
+    accent: "#a3ed00",
     name: "OpenCorp",
     category: "AI agents / Web app",
     description:
@@ -22,7 +25,9 @@ export const projects = [
       "A crypto payment gateway for vendors. Create payment links, connect a wallet at checkout, and manage assets and withdrawals from one dashboard.",
     type: "Payment gateway",
     year: "2024",
-    sourceUrl: "https://github.com/lohit101/crypto-payment-gateway/tree/idx",
+    href: "https://github.com/lohit101/crypto-payment-gateway/tree/idx",
+    linkLabel: "View source",
+    accent: "#31c995",
   },
   {
     id: "amazon",
@@ -32,7 +37,9 @@ export const projects = [
       "An independent rebrand concept exploring a new expression of Amazon. A geometric wordmark, a refined smile, and a compact symbol form one connected identity.",
     type: "Brand identity concept",
     year: "2022",
-    caseStudyUrl: "https://www.behance.net/gallery/156197543/Amazon-Brand-Identity-Redesign-(Rebranding)",
+    href: "https://www.behance.net/gallery/156197543/Amazon-Brand-Identity-Redesign-(Rebranding)",
+    linkLabel: "View case study",
+    accent: "#ff9e2b",
   },
 ] as const;
 export const fragments = [

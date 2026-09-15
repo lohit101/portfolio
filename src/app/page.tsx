@@ -2,7 +2,7 @@ import { HeroAtmosphere } from "@/components/hero-atmosphere";
 import { Navigation } from "@/components/navigation";
 import { ScrollScene } from "@/components/scroll-scene";
 import { Wordmark } from "@/components/wordmark";
-import { ProjectPreview } from "@/components/previews";
+import { ProjectCard } from "@/components/project-card";
 import { Fragments } from "@/components/fragments";
 import { profile, projects } from "@/lib/content";
 export default function Home() {
@@ -57,33 +57,7 @@ export default function Home() {
               </div>
               <div className="projects">
                 {projects.map((p, i) => (
-                  <article
-                    className={`project project-${i}`}
-                    key={p.id}
-                    data-reveal
-                  >
-                    <ProjectPreview kind={p.id} />
-                    <div className="project-caption">
-                      <div>
-                        <h3>{p.name}</h3>
-                        <p>{p.category}</p>
-                      </div>
-                      {"sourceUrl" in p ? (
-                        <a className="concept-label" href={p.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${p.name} on GitHub`}>
-                          VIEW SOURCE ↗
-                        </a>
-                      ) : "caseStudyUrl" in p ? (
-                        <a className="concept-label" href={p.caseStudyUrl} target="_blank" rel="noopener noreferrer" aria-label="View Amazon rebrand case study on Behance">
-                          VIEW CASE STUDY ↗
-                        </a>
-                      ) : (
-                        <span className="concept-label">
-                          {p.id === "opencorp" ? "RECENT PROJECT" : "CONCEPT PROJECT ↗"}
-                        </span>
-                      )}
-                    </div>
-                    <p className="project-description">{p.description}</p>
-                  </article>
+                  <ProjectCard project={p} index={i} key={p.id} />
                 ))}
               </div>
             </section>
