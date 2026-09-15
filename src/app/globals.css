@@ -1,6 +1,7 @@
 @import "tailwindcss";
 :root {
   --red: #e72604;
+  --viewport-background: var(--red);
   --ink: #080808;
   --paper: #fff;
   --muted: #797975;
@@ -12,12 +13,14 @@
   box-sizing: border-box;
 }
 html {
+  background: var(--viewport-background);
+  color-scheme: light;
   scroll-behavior: auto;
   scroll-padding-top: 24px;
 }
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--viewport-background);
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;

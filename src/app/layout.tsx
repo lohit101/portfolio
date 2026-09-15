@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { SiteGrain } from "@/components/site-grain";
@@ -10,6 +10,11 @@ const accent = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-accent",
 });
+export const viewport: Viewport = {
+  themeColor: "#e72604",
+  colorScheme: "light",
+};
+
 export const metadata: Metadata = {
   title: "Lohit — Design, code & a little AI",
   description:

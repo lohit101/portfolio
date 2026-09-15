@@ -11,6 +11,28 @@ export function ScrollScene({ children }: { children: React.ReactNode }) {
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
+      const page = document.documentElement;
+      const theme = document.querySelector<HTMLMetaElement>(
+        'meta[name="theme-color"]',
+      );
+      const initialBackground = page.style.getPropertyValue(
+        "--viewport-background",
+      );
+      const initialTheme = theme?.content;
+      const colors = getComputedStyle(page);
+      const red = colors.getPropertyValue("--red").trim();
+      const paper = colors.getPropertyValue("--paper").trim();
+      let currentSurface: boolean | undefined;
+      const syncSurface = (isPaper: boolean) => {
+        if (currentSurface === isPaper) return;
+        currentSurface = isPaper;
+        const color = isPaper ? paper : red;
+        // Safari's insets/overscroll use the document background. Older browser
+        // chrome also reads theme-color. Keep both tied to the rendered scene.
+        page.style.setProperty("--viewport-background", color);
+        if (theme) theme.content = color;
+      };
+      syncSurface(false);
       const setupDirectionNav = (
         nav: HTMLElement,
         introEnd: () => number,
@@ -128,6 +150,12 @@ export function ScrollScene({ children }: { children: React.ReactNode }) {
             { autoAlpha: 1, y: 0, duration: 0.1 },
             0.9,
           );
+        const syncAnimatedSurface = () => syncSurface(tl.time() >= 0.9);
+        tl.eventCallback("onUpdate", syncAnimatedSurface);
+        // Refresh temporarily rewinds timelines with callbacks suppressed on
+        // restoration, so resync after orientation/font/layout recalculations.
+        ScrollTrigger.addEventListener("refresh", syncAnimatedSurface);
+        syncAnimatedSurface();
         const cleanupNav = setupDirectionNav(
           host.querySelector<HTMLElement>(".floating-navigation .navigation")!,
           () => tl.scrollTrigger!.end,
@@ -193,6 +221,7 @@ export function ScrollScene({ children }: { children: React.ReactNode }) {
         return () => {
           active = false;
           cleanupNav();
+          ScrollTrigger.removeEventListener("refresh", syncAnimatedSurface);
           document.removeEventListener("click", onAnchorClick);
           window.removeEventListener("hashchange", onHashChange);
           smoother.kill();
@@ -201,13 +230,30 @@ export function ScrollScene({ children }: { children: React.ReactNode }) {
       });
       mm.add("(prefers-reduced-motion: reduce)", () => {
         const host = root.current!;
+        const hero = host.querySelector<HTMLElement>(".hero")!;
+        const syncStaticSurface = () =>
+          syncSurface(hero.getBoundingClientRect().bottom <= 0);
+        ScrollTrigger.create({
+          trigger: hero,
+          start: "bottom top",
+          end: "max",
+          onUpdate: syncStaticSurface,
+          onRefresh: syncStaticSurface,
+        });
+        syncStaticSurface();
         return setupDirectionNav(
           host.querySelector<HTMLElement>(".portfolio-body > .navigation")!,
           () => host.querySelector<HTMLElement>(".hero")!.offsetHeight,
           true,
         );
       });
-      return () => mm.revert();
+      return () => {
+        mm.revert();
+        if (initialBackground)
+          page.style.setProperty("--viewport-background", initialBackground);
+        else page.style.removeProperty("--viewport-background");
+        if (theme && initialTheme !== undefined) theme.content = initialTheme;
+      };
     },
     { scope: root },
   );
