@@ -68,9 +68,15 @@ export default function Home() {
                         <h3>{p.name}</h3>
                         <p>{p.category}</p>
                       </div>
-                      <span className="concept-label">
-                        {p.id === "opencorp" ? "RECENT PROJECT" : "CONCEPT PROJECT ↗"}
-                      </span>
+                      {"sourceUrl" in p ? (
+                        <a className="concept-label" href={p.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${p.name} on GitHub`}>
+                          VIEW SOURCE ↗
+                        </a>
+                      ) : (
+                        <span className="concept-label">
+                          {p.id === "opencorp" ? "RECENT PROJECT" : "CONCEPT PROJECT ↗"}
+                        </span>
+                      )}
                     </div>
                     <p className="project-description">{p.description}</p>
                   </article>

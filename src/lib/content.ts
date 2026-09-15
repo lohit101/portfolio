@@ -15,13 +15,14 @@ export const projects = [
     year: "2026",
   },
   {
-    id: "relay",
-    name: "Relay",
-    category: "Product design / Web app",
+    id: "cryptowall",
+    name: "CryptoWall",
+    category: "Crypto payments / Web app",
     description:
-      "One calm place for agencies to keep client work moving. A working concept for simpler project handoffs.",
-    type: "Agency workspace",
-    year: "2026",
+      "A crypto payment gateway for vendors. Create payment links, connect a wallet at checkout, and manage assets and withdrawals from one dashboard.",
+    type: "Payment gateway",
+    year: "2024",
+    sourceUrl: "https://github.com/lohit101/crypto-payment-gateway/tree/idx",
   },
   {
     id: "offscript",

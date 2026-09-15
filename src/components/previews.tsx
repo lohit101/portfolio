@@ -16,6 +16,18 @@ export function ProjectPreview({ kind }: { kind: string }) {
         />
       </div>
     );
+  if (kind === "cryptowall")
+    return (
+      <div className="project-preview cryptowall">
+        <Image
+          src="/projects/cryptowall-cover.png"
+          alt="CryptoWall — Crypto payments, connected. An emerald glass lightning bolt above flowing green payment tracks on a black surface."
+          fill
+          sizes="(max-width: 700px) 92vw, 45vw"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
+    );
   if (kind === "forma")
     return (
       <div className={`project-preview forma ${active ? "forma-alt" : ""}`}>
