@@ -264,6 +264,15 @@ button:active {
 .project:first-child .project-preview {
   aspect-ratio: 1.9;
 }
+.project:first-child .project-preview.opencorp {
+  aspect-ratio: auto;
+  background: #111112;
+}
+.opencorp img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .project-caption {
   display: flex;
   justify-content: space-between;

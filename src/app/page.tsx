@@ -68,7 +68,9 @@ export default function Home() {
                         <h3>{p.name}</h3>
                         <p>{p.category}</p>
                       </div>
-                      <span className="concept-label">CONCEPT PROJECT ↗</span>
+                      <span className="concept-label">
+                        {p.id === "opencorp" ? "RECENT PROJECT" : "CONCEPT PROJECT ↗"}
+                      </span>
                     </div>
                     <p className="project-description">{p.description}</p>
                   </article>

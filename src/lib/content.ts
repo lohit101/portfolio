@@ -6,12 +6,12 @@ export const profile = {
 };
 export const projects = [
   {
-    id: "forma",
-    name: "Forma®",
-    category: "Brand experience / Development",
+    id: "opencorp",
+    name: "OpenCorp",
+    category: "AI agents / Web app",
     description:
-      "A sharper digital home for an independent creative studio. Designed to turn a good first impression into a conversation.",
-    type: "Studio website",
+      "A company of AI agents, working together. Organize a team, delegate tasks, and follow their conversations in one visual workspace.",
+    type: "AI workspace",
     year: "2026",
   },
   {

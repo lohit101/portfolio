@@ -1,8 +1,21 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 export function ProjectPreview({ kind }: { kind: string }) {
   const [active, setActive] = useState(false);
   const [tab, setTab] = useState("In progress");
+  if (kind === "opencorp")
+    return (
+      <div className="project-preview opencorp">
+        <Image
+          src="/projects/opencorp-cover.png"
+          alt="OpenCorp — A company of AI agents. A lime-accented CEO tile connects to Design, Engineering, Research, and QA on a charcoal canvas."
+          width={1727}
+          height={911}
+          sizes="(max-width: 700px) 92vw, 90vw"
+        />
+      </div>
+    );
   if (kind === "forma")
     return (
       <div className={`project-preview forma ${active ? "forma-alt" : ""}`}>
