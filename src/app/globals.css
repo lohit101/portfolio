@@ -18,6 +18,17 @@ html {
   scroll-behavior: auto;
   scroll-padding-top: 24px;
 }
+/* Hide scrollbars without disabling wheel, touch, or keyboard scrolling. */
+html,
+body,
+.fragment-dialog {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.fragment-dialog::-webkit-scrollbar {
+  display: none;
+}
 body {
   margin: 0;
   background: var(--viewport-background);
